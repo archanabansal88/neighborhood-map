@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -6014,12 +6014,83 @@ ko.exportSymbol('nativeTemplateEngine', ko.nativeTemplateEngine);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/**
+* @constructor represents Map
+* @param {number} lat
+* @param {number} lng
+*/
+class Map {
+  constructor (lat, lng) {
+    this.singleLatLng = {lat, lng}
+    this.init()
+  }
+  /**
+    * @description initialize the app
+    */
+  init () {
+    this.renderMap()
+    this.renderInfoWindow()
+    this.renderMarker()
+    this.attachEvent()
+  }
+  /**
+    * @description create a new map JS object
+    */
+  renderMap () {
+    this.map = new google.maps.Map(document.getElementById('map'), {
+      center: this.singleLatLng,
+      zoom: 13
+    })
+  }
+
+  /**
+    * @description render a marker appearing with the position of the singleLatLng on the map with title!
+    */
+  renderMarker () {
+    this.marker = new google.maps.Marker({
+      position: this.singleLatLng,
+      map: this.map,
+      title: 'First Marker!'
+    })
+  }
+  /**
+    * @description render a infowindow with the content
+    */
+  renderInfoWindow () {
+    this.infowindow = new google.maps.InfoWindow({
+      content: 'my location'
+    })
+  }
+  /**
+    * @description set up a event listener for a marker
+    */
+  attachEvent () {
+    this.marker.addListener('click', () => {
+      this.infowindow.open(this.map, this.marker)
+    })
+  }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Map;
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_knockout__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_knockout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_knockout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__map__ = __webpack_require__(1);
 
 
-console.log('Hello World')
+
+function initMap () {
+  const map = new __WEBPACK_IMPORTED_MODULE_1__map__["a" /* default */](12.9173508, 77.71742540000002)
+}
+
+window.initMap = initMap
 
 
 /***/ })
