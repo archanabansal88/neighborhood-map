@@ -1,0 +1,18 @@
+{
+  "name": "neighborhood-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Archana Bansal",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "knockout": "^3.4.2"
+  }
+}
