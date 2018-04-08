@@ -1,11 +1,12 @@
+import location from './locations'
 /**
 * @constructor represents Map
 * @param {number} lat
 * @param {number} lng
 */
 export default class Map {
-  constructor (lat, lng) {
-    this.singleLatLng = {lat, lng}
+  constructor () {
+    this.marker = []
     this.init()
   }
 
@@ -16,7 +17,6 @@ export default class Map {
     this.renderMap()
     this.renderInfoWindow()
     this.renderMarker()
-    this.attachEvent()
   }
 
   /**
@@ -24,7 +24,7 @@ export default class Map {
     */
   renderMap () {
     this.map = new google.maps.Map(document.getElementById('map'), {
-      center: this.singleLatLng,
+      center: location[0].location,
       zoom: 13
     })
   }
@@ -33,10 +33,13 @@ export default class Map {
     * @description render a marker appearing with the position of the singleLatLng on the map with title!
     */
   renderMarker () {
-    this.marker = new google.maps.Marker({
-      position: this.singleLatLng,
-      map: this.map,
-      title: 'First Marker!'
+    location.forEach((value, index) => {
+      this.marker[index] = new google.maps.Marker({
+        position: value.location,
+        map: this.map,
+        title: value.title
+      })
+      this.attachEvent(index)
     })
   }
 
@@ -52,9 +55,9 @@ export default class Map {
   /**
     * @description set up a event listener for a marker
     */
-  attachEvent () {
-    this.marker.addListener('click', () => {
-      this.infowindow.open(this.map, this.marker)
+  attachEvent (index) {
+    this.marker[index].addListener('click', () => {
+      this.infowindow.open(this.map, this.marker[index])
     })
   }
 }
