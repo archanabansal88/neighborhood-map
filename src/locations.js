@@ -1,6 +1,6 @@
 export default [
   {
-    title: 'DSR White Waters,Bangalore',
+    title: 'DSR White Waters',
     location: {
       lat: 12.9173508,
       lng: 77.71742540000002

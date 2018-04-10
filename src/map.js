@@ -20,7 +20,7 @@ export default class Map {
   }
 
   /**
-    * @description create a new map JS object
+    * @description render a new map JS object
     */
   renderMap () {
     this.map = new google.maps.Map(document.getElementById('map'), {
@@ -30,12 +30,13 @@ export default class Map {
   }
 
   /**
-    * @description render a marker appearing with the position of the singleLatLng on the map with title!
+    * @description render a marker appearing with the position on the map with title!
     */
   renderMarker () {
     location.forEach((value, index) => {
       this.marker[index] = new google.maps.Marker({
         position: value.location,
+        animation: google.maps.Animation.DROP,
         map: this.map,
         title: value.title
       })
