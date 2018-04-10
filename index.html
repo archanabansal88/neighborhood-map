@@ -5,6 +5,25 @@
         <link rel="stylesheet" href="./style.css" />
 	</head>
     <body>
+        <header class="header">
+            <div class="hamburgur-icon"  data-bind='click: showSideBar'>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="header-title">Neighborhood Map</div>
+        </header>
+        <aside class="sidebar" data-bind="visible: isSideBarVisible">
+            <div data-bind="click: hideSideBar">close</div>
+            <ul class="location-list">
+                <li class="location">DSR White Waters</li>
+                <li class="location">Birbal Darbar</li>
+                <li class="location">Decathlon</li>
+                <li class="location">Carmelaram Mount Carmel Church</li>
+                <li class="location">krupanidhi college of pharmacy</li>
+                <li class="location">carmelaram railway station</li>
+            </ul>
+        </aside>
         <div id="map" class="map"></div>
         <script type="text/javascript" src="./build/main.js"></script>
         <script async defer
