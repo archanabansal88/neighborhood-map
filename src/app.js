@@ -2,10 +2,12 @@ import ko from 'knockout'
 import Map from './map'
 import ViewModel from './viewModel'
 import location from './locations'
+import Venue from './venue'
 
 function initMap () {
-  const map = new Map()
-  ko.applyBindings(new ViewModel(location))
+  const venueDetails = location.map((venue) => new Venue(venue))
+  const map = new Map(venueDetails)
+  ko.applyBindings(new ViewModel(venueDetails, map))
 }
 
 window.initMap = initMap

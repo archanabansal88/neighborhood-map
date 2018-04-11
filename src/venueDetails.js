@@ -7,7 +7,7 @@ export default (lat, lng, query) => {
   const api = `https://api.foursquare.com/v2/venues/search?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&ll=${lat},${lng}&query=${query}&v=${date}&radius=250`
 
   /* TODO: ENABLE FETCHING DATA */
-  const useMockData = true
+  const useMockData = false
   if (!useMockData) {
     return fetch(api).then((response) => {
       return response.json()
