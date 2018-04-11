@@ -6,7 +6,7 @@
 	</head>
     <body>
         <header class="header">
-            <div class="hamburgur-icon"  data-bind='click: showSideBar'>
+            <div class="hamburger-icon"  data-bind='click: showSideBar'>
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -15,14 +15,10 @@
         </header>
         <aside class="sidebar" data-bind="visible: isSideBarVisible">
             <div data-bind="click: hideSideBar">close</div>
-            <ul class="location-list">
-                <li class="location">DSR White Waters</li>
-                <li class="location">Birbal Darbar</li>
-                <li class="location">Decathlon</li>
-                <li class="location">Carmelaram Mount Carmel Church</li>
-                <li class="location">krupanidhi college of pharmacy</li>
-                <li class="location">carmelaram railway station</li>
-            </ul>
+            <input type="search" class="input-search" data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
+            <ul class="location-list" data-bind="foreach: filterLocation">
+                <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
+            </ul> 
         </aside>
         <div id="map" class="map"></div>
         <script type="text/javascript" src="./build/main.js"></script>
