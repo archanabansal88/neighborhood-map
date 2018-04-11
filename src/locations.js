@@ -1,18 +1,19 @@
 export default [
   {
-    title: 'DSR White Waters',
-    location: {
-      lat: 12.9173508,
-      lng: 77.71742540000002
-    }
-  },
-  {
     title: 'Birbal Darbar',
     location: {
       lat: 12.90279,
       lng: 77.70559370000001
     }
   },
+  {
+    title: 'Big Brewsky',
+    location: {
+      lat: 12.9129234,
+      lng: 77.68314190000001
+    }
+  },
+
   {
     title: 'Decathlon',
     location: {
@@ -21,24 +22,31 @@ export default [
     }
   },
   {
-    title: 'Carmelaram Mount Carmel Church',
+    title: 'Riverside',
     location: {
-      lat: 12.9140254,
-      lng: 77.71096220000004
+      lat: 12.9671648,
+      lng: 77.7497151
     }
   },
   {
-    title: 'krupanidhi college of pharmacy',
+    title: "The Fisherman's Whraf",
     location: {
-      lat: 12.9141449,
-      lng: 77.72332919999997
+      lat: 12.9143818,
+      lng: 77.66662429999997
     }
   },
   {
-    title: 'carmelaram railway station',
+    title: 'Columbia Asia Hospital',
     location: {
-      lat: 12.907345,
-      lng: 77.70585460000007
+      lat: 12.958246,
+      lng: 77.74538400000006
+    }
+  },
+  {
+    title: 'Central Mall',
+    location: {
+      lat: 12.9263026,
+      lng: 77.67527840000002
     }
   }
 

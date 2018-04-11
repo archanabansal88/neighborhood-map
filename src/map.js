@@ -44,7 +44,10 @@ export default class Map {
   }
 
   handleMarkerClick (value) {
+    this.cancelAnimation()
     this.infowindow.open(this.map, value.marker)
+    value.marker.setAnimation(google.maps.Animation.BOUNCE)
+    this.currentMarker = value.marker
     this.infowindow.setContent('')
     value.getVenue().then((res) => {
       this.infoWindowMarkup(res)
@@ -53,10 +56,9 @@ export default class Map {
 
   infoWindowMarkup (res) {
     const {name, location, contact} = res.venues[0]
+    const phoneNo = contact.phone ? `<div>phone: ${contact.phone}</div>` : ''
     const markUp = `<div>${name}</div>
-                      <div>${location.address}</div>
-                      <div>${location.crossStreet}</div>
-                      <div>phone-${contact.phone}</div>`
+                      <div>${location.formattedAddress.join('\n')}</div>${phoneNo}`
     this.infowindow.setContent(markUp)
   }
 
@@ -65,6 +67,13 @@ export default class Map {
     */
   renderInfoWindow () {
     this.infowindow = new google.maps.InfoWindow({})
+    google.maps.event.addListener(this.infowindow, 'closeclick', this.cancelAnimation.bind(this))
+  }
+
+  cancelAnimation () {
+    if (this.currentMarker) {
+      this.currentMarker.setAnimation(null)
+    }
   }
   closeInfoWindow () {
     this.infowindow.close()
