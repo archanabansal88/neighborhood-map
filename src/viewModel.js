@@ -3,6 +3,7 @@ import ko from 'knockout'
 export default class ViewModel {
   constructor (location, map) {
     this.location = location
+    this.displayVenue = this.displayVenue.bind(this)
     this.isSideBarVisible = ko.observable(false)
     this.searchedText = ko.observable('')
     this.filterLocation = ko.computed(() => {
@@ -24,6 +25,7 @@ export default class ViewModel {
   }
 
   displayVenue (venue) {
+    this.hideSideBar()
     google.maps.event.trigger(venue.marker, 'click')
   }
 }

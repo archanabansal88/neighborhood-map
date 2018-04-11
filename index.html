@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <meta charset="utf-8">
         <title>Neighborhood Map</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style.css" />
 	</head>
     <body>
@@ -11,16 +14,25 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
-            <div class="header-title">Neighborhood Map</div>
+            <h1 class="header-title">Neighborhood Map</h1>
         </header>
-        <aside class="sidebar" data-bind="visible: isSideBarVisible">
-            <div data-bind="click: hideSideBar">close</div>
-            <input type="search" class="input-search" data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
-            <ul class="location-list" data-bind="foreach: filterLocation">
-                <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
-            </ul> 
+        <aside class="sidebar" data-bind="style: { width: isSideBarVisible() ? '250px' : '0'}">
+            <section class='sidebar-content'>
+                <div class="sidebar-header">
+                    <h2 class="sidebar-title">Filter</h2>
+                    <div data-bind="click: hideSideBar" class="close-icon">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                    </div>
+                </div>              
+                <input type="search" class="input-search" placeholder="Search.." data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
+                <ul class="location-list" data-bind="foreach: filterLocation">
+                    <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
+                </ul> 
+            </section>
         </aside>
         <div id="map" class="map"></div>
+        <div class="back-drop" data-bind="visible: isSideBarVisible, click: hideSideBar"></div>
         <script type="text/javascript" src="./build/main.js"></script>
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqG1PMoPH2Zit5sAFsF5c28prKGH-wSg&v=3&callback=initMap"> 

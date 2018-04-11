@@ -58,7 +58,7 @@ export default class Map {
     const {name, location, contact} = res.venues[0]
     const phoneNo = contact.phone ? `<div>phone: ${contact.phone}</div>` : ''
     const markUp = `<div>${name}</div>
-                      <div>${location.formattedAddress.join('\n')}</div>${phoneNo}`
+                      <div>${location.formattedAddress.join('<br\>')}</div>${phoneNo}`
     this.infowindow.setContent(markUp)
   }
 
