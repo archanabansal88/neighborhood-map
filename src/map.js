@@ -1,7 +1,6 @@
 /**
 * @constructor represents Map
-* @param {number} lat
-* @param {number} lng
+* @param {object} location
 */
 export default class Map {
   constructor (location) {
@@ -43,8 +42,11 @@ export default class Map {
     })
   }
 
+  /**
+    * @description display the venue on infowindow, setting and removing animation of marker on clicking
+    */
   handleMarkerClick (value) {
-    this.cancelAnimation()
+    this.cancelAnimnation()
     this.infowindow.open(this.map, value.marker)
     value.marker.setAnimation(google.maps.Animation.BOUNCE)
     this.currentMarker = value.marker
@@ -54,6 +56,9 @@ export default class Map {
     })
   }
 
+  /**
+    * @description creating the markup of venue details and setting it to infowindow
+    */
   infoWindowMarkup (res) {
     const {name, location, contact} = res.venues[0]
     const phoneNo = contact.phone ? `<div>phone: ${contact.phone}</div>` : ''
@@ -63,18 +68,25 @@ export default class Map {
   }
 
   /**
-    * @description render a infowindow with the content
+    * @description render the infowindow
     */
   renderInfoWindow () {
     this.infowindow = new google.maps.InfoWindow({})
     google.maps.event.addListener(this.infowindow, 'closeclick', this.cancelAnimation.bind(this))
   }
 
+  /**
+    * @description removing the animation of marker on closeclick
+    */
   cancelAnimation () {
     if (this.currentMarker) {
       this.currentMarker.setAnimation(null)
     }
   }
+
+  /**
+    * @description closing the infowindow
+    */
   closeInfoWindow () {
     this.infowindow.close()
   }

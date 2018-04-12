@@ -1,5 +1,10 @@
 import ko from 'knockout'
 
+/**
+* @constructor represents ViewModel
+* @param {object} location
+* @param {object} map
+*/
 export default class ViewModel {
   constructor (location, map) {
     this.location = location
@@ -16,14 +21,23 @@ export default class ViewModel {
     })
   }
 
+  /**
+    * @description display the side bar with list of locations
+    */
   showSideBar () {
     this.isSideBarVisible(true)
   }
 
+  /**
+    * @description hide the side bar
+    */
   hideSideBar () {
     this.isSideBarVisible(false)
   }
 
+  /**
+    * @description display the venue on clicking the location of list
+    */
   displayVenue (venue) {
     this.hideSideBar()
     google.maps.event.trigger(venue.marker, 'click')
