@@ -13,16 +13,16 @@ export default class Venue {
         this.getVenueDetails(this.location.lat, this.location.lng, this.title).then((res) => {
           this.venue = res.response
           resolve(this.venue)
-        })
+        }).catch((err) => reject(err))
       } else {
         resolve(this.venue)
       }
     })
   }
+
   getVenueDetails (lat, lng, query) {
     const date = 20180409
     const api = `https://api.foursquare.com/v2/venues/search?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&ll=${lat},${lng}&query=${query}&v=${date}&radius=250`
-
     return fetch(api).then((response) => {
       return response.json()
     })

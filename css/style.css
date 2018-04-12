@@ -144,8 +144,6 @@ body {
 
 .error-title{
     border: 1px solid #c33;
-    font-weight: normal;
-    color: #c33;
     background: #cc33331a;
     padding: 2em;
 }
@@ -158,4 +156,9 @@ body {
     width: 30px;
     background-size: 30px;
     right: 9px;
+}
+
+.error{
+    font-weight: normal;
+    color: #c33;
 }

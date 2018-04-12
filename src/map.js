@@ -53,6 +53,8 @@ export default class Map {
     this.infowindow.setContent('')
     value.getVenue().then((res) => {
       this.infoWindowMarkup(res)
+    }).catch(() => {
+      this.infowindow.setContent('<div class = "error">There is some problem. Please try again later</div>')
     })
   }
 
