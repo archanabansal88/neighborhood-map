@@ -1,4 +1,5 @@
-import getVenueDetails from './venueDetails'
+const CLIENT_ID = 'CV0WB20WFGJC3P13VMHWKYZWM1BDSHFLL2YGZIELBHLNRPPJ'
+const CLIENT_SECRET = 'HP4OA3DME10PYDUZ5LW4OTL1R4RBV1OUY0APPVTVNV4ATLUR'
 
 export default class Venue {
   constructor (location) {
@@ -9,13 +10,21 @@ export default class Venue {
   getVenue () {
     return new Promise((resolve, reject) => {
       if (!this.venue) {
-        getVenueDetails(this.location.lat, this.location.lng, this.title).then((res) => {
+        this.getVenueDetails(this.location.lat, this.location.lng, this.title).then((res) => {
           this.venue = res.response
           resolve(this.venue)
         })
       } else {
         resolve(this.venue)
       }
+    })
+  }
+  getVenueDetails (lat, lng, query) {
+    const date = 20180409
+    const api = `https://api.foursquare.com/v2/venues/search?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&ll=${lat},${lng}&query=${query}&v=${date}&radius=250`
+
+    return fetch(api).then((response) => {
+      return response.json()
     })
   }
 }

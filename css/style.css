@@ -151,7 +151,7 @@ body {
 }
 
 .fourSquareLogo{
-    background: url('./icon/foursquare.png');
+    background: url('../icon/foursquare.png');
     position: fixed;
     bottom: 122px;
     height: 30px;
