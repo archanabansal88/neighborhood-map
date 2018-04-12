@@ -133,3 +133,19 @@ body {
 .sidebar-title{
     font-weight: normal;
 }
+
+.wrapper{
+    display: none;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.error-title{
+    border: 1px solid #c33;
+    font-weight: normal;
+    color: #c33;
+    background: #cc33331a;
+    padding: 2em;
+}

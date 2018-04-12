@@ -46,7 +46,7 @@ export default class Map {
     * @description display the venue on infowindow, setting and removing animation of marker on clicking
     */
   handleMarkerClick (value) {
-    this.cancelAnimnation()
+    this.cancelAnimation()
     this.infowindow.open(this.map, value.marker)
     value.marker.setAnimation(google.maps.Animation.BOUNCE)
     this.currentMarker = value.marker

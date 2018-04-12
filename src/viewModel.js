@@ -6,18 +6,21 @@ import ko from 'knockout'
 * @param {object} map
 */
 export default class ViewModel {
-  constructor (location, map) {
+  constructor (location, map, isAppLoaded) {
     this.location = location
     this.displayVenue = this.displayVenue.bind(this)
     this.isSideBarVisible = ko.observable(false)
+    this.isAppLoaded = ko.observable(isAppLoaded)
     this.searchedText = ko.observable('')
     this.filterLocation = ko.computed(() => {
-      map.closeInfoWindow()
-      return this.location.filter((venue) => {
-        const isMatched = venue.title.toLowerCase().indexOf(this.searchedText().toLowerCase()) !== -1
-        venue.marker.setVisible(isMatched)
-        return isMatched
-      })
+      if (isAppLoaded) {
+        map.closeInfoWindow()
+        return this.location.filter((venue) => {
+          const isMatched = venue.title.toLowerCase().indexOf(this.searchedText().toLowerCase()) !== -1
+          venue.marker.setVisible(isMatched)
+          return isMatched
+        })
+      }
     })
   }
 

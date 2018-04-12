@@ -22,13 +22,6 @@ export default [
     }
   },
   {
-    title: 'Riverside',
-    location: {
-      lat: 12.9671648,
-      lng: 77.7497151
-    }
-  },
-  {
     title: "The Fisherman's Whraf",
     location: {
       lat: 12.9143818,
@@ -36,10 +29,10 @@ export default [
     }
   },
   {
-    title: 'Columbia Asia Hospital',
+    title: 'Sakra World Hospital',
     location: {
-      lat: 12.958246,
-      lng: 77.74538400000006
+      lat: 12.9322697,
+      lng: 77.68534039999997
     }
   },
   {

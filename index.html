@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
         <meta charset="utf-8">
         <title>Neighborhood Map</title>
         <meta name="description" content="">
@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./style.css" />
 	</head>
     <body>
+        <section class="wrapper" data-bind="style: {display: isAppLoaded() ? 'block': 'none'}">
         <header class="header">
             <!-- creating hamburger icon to show side bar-->
             <div class="hamburger-icon"  data-bind='click: showSideBar'>
@@ -36,9 +37,13 @@
         </aside>
         <div id="map" class="map"></div>
         <div class="back-drop" data-bind="visible: isSideBarVisible, click: hideSideBar"></div>
+    </section>
+    <section class="wrapper" data-bind = "style: {display: !isAppLoaded() ? 'flex': 'none'}">
+        <h3 class="error-title">There is some issue loading the map<br/>Please check the internet connection or try after some time</h3>
+    </section>
         <script type="text/javascript" src="./build/main.js"></script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqG1PMoPH2Zit5sAFsF5c28prKGH-wSg&v=3&callback=initMap"> 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqG1PMoPH2Zit5sAFsF5c28prKGH-wSg&v=3&callback=initMap" onerror="handleMapError()"> 
         </script>
     </body>
 </html>
