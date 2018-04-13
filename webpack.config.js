@@ -1,5 +1,5 @@
-const webpack = require('webpack')
-const isProd = process.env.NODE_ENV === 'production'
+const webpack = require('webpack');
+const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/app.js',
@@ -36,18 +36,20 @@ module.exports = {
       }
     ]
   },
-  plugins: isProd ? [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        screw_ie8: true,
-        warnings: false
-      },
-      comments: false
-    }),
-    new webpack.optimize.AggressiveMergingPlugin()
-  ] : []
-}
+  plugins: isProd
+    ? [
+        new webpack.LoaderOptionsPlugin({
+          minimize: true,
+          debug: false
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            screw_ie8: true,
+            warnings: false
+          },
+          comments: false
+        }),
+        new webpack.optimize.AggressiveMergingPlugin()
+      ]
+    : []
+};
