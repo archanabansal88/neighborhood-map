@@ -129,6 +129,7 @@ body {
     color: #4c4c4c;
     border-bottom: 1px solid #d9d9d9;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 /* style for back drop */

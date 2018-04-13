@@ -51,7 +51,7 @@ export default class Map {
     this.infowindow.open(this.map, value.marker)
     value.marker.setAnimation(google.maps.Animation.BOUNCE)
     this.currentMarker = value.marker
-    this.infowindow.setContent('')
+    this.infowindow.setContent('Loading..')
     value.getVenue().then((res) => {
       this.infoWindowMarkup(res)
     }).catch(() => {
