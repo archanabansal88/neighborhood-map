@@ -1,17 +1,22 @@
 {
   "name": "neighborhood-map",
   "version": "1.0.0",
-  "description": "",
+  "description": "render map of my neighborhood",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && webpack-dev-server"
+    "start": "export NODE_ENV='development' && webpack && webpack-dev-server",
+    "build": "export NODE_ENV='production' && webpack"
   },
   "author": "Archana Bansal",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "babel-loader": "7.1.2",
+    "babel-preset-es2015": "6.24.0",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-core": "6.26.0"
   },
   "dependencies": {
     "knockout": "^3.4.2"

@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Neighborhood Map</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/style.css" />
 	</head>
@@ -29,6 +28,7 @@
                         </div>
                     </div>              
                     <input type="search" class="input-search" placeholder="Search.." data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
+                    <div data-bind="visible: !filterLocation().length" class="error-list error">No data found</div>
                     <!-- location-list containing lists of locations -->
                     <ul class="location-list" data-bind="foreach: filterLocation">
                         <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
@@ -44,7 +44,7 @@
         <section class="wrapper" data-bind = "style: {display: !isAppLoaded() ? 'flex': 'none'}">
             <h3 class="error-title error">There is some issue loading the map<br/>Please check the internet connection or try after some time</h3>
         </section>
-        <script type="text/javascript" src="./build/main.js"></script>
+        <script type="text/javascript" src="./dist/main.js"></script>
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqG1PMoPH2Zit5sAFsF5c28prKGH-wSg&v=3&callback=initMap" onerror="handleMapError()"> 
         </script>

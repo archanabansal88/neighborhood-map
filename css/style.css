@@ -162,6 +162,11 @@ body {
     padding: 2em;
 }
 
+.error-list{
+    margin-top: 20px;
+    text-align: center;
+}
+
 .error{
     font-weight: normal;
     color: #c33;
