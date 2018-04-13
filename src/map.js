@@ -44,6 +44,7 @@ export default class Map {
 
   /**
     * @description display the venue on infowindow, setting and removing animation of marker on clicking
+    * handling error on failing to display venue details on infowinodow
     */
   handleMarkerClick (value) {
     this.cancelAnimation()

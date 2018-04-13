@@ -9,39 +9,41 @@
 	</head>
     <body>
         <section class="wrapper" data-bind="style: {display: isAppLoaded() ? 'block': 'none'}">
-        <header class="header">
-            <!-- creating hamburger icon to show side bar-->
-            <div class="hamburger-icon"  data-bind='click: showSideBar'>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <h1 class="header-title">Neighborhood Map</h1>
-        </header>
-        <aside class="sidebar" data-bind="style: { width: isSideBarVisible() ? '250px' : '0'}">
-            <section class='sidebar-content'>
-                <div class="sidebar-header">
-                    <h2 class="sidebar-title">Filter</h2>
-                    <!-- creating close icon to hide the side bar -->
-                    <div data-bind="click: hideSideBar" class="close-icon">
-                        <div class="bar1"></div>
-                        <div class="bar2"></div>
-                    </div>
-                </div>              
-                <input type="search" class="input-search" placeholder="Search.." data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
-                <!-- location-list containing lists of locations -->
-                <ul class="location-list" data-bind="foreach: filterLocation">
-                    <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
-                </ul> 
-            </section>
-        </aside>
-        <div id="map" class="map"></div>
-        <div class="back-drop" data-bind="visible: isSideBarVisible, click: hideSideBar"></div>
-        <aside class="fourSquareLogo"></aside>
-    </section>
-    <section class="wrapper" data-bind = "style: {display: !isAppLoaded() ? 'flex': 'none'}">
-        <h3 class="error-title error">There is some issue loading the map<br/>Please check the internet connection or try after some time</h3>
-    </section>
+            <header class="header">
+                <!-- creating hamburger icon to show side bar-->
+                <div class="hamburger-icon"  data-bind='click: showSideBar'>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <h1 class="header-title">Neighborhood Map</h1>
+            </header>
+            <aside class="sidebar" data-bind="style: { width: isSideBarVisible() ? '250px' : '0'}">
+                <section class='sidebar-content'>
+                    <div class="sidebar-header">
+                        <h2 class="sidebar-title">Filter</h2>
+                        <!-- creating close icon to hide the side bar -->
+                        <div data-bind="click: hideSideBar" class="close-icon">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                        </div>
+                    </div>              
+                    <input type="search" class="input-search" placeholder="Search.." data-bind="textInput: searchedText, valueUpdate: 'afterkeydown'"/>
+                    <!-- location-list containing lists of locations -->
+                    <ul class="location-list" data-bind="foreach: filterLocation">
+                        <li class="location" data-bind="text: title, click: $parent.displayVenue"></li>
+                    </ul> 
+                </section>
+            </aside>
+            <div id="map" class="map"></div>
+            <div class="back-drop" data-bind="visible: isSideBarVisible, click: hideSideBar"></div>
+            <!-- displaying four square logo-->
+            <aside class="fourSquareLogo"></aside>
+        </section>
+        <!-- wrapper for handling error in map loading, displaying error message-->
+        <section class="wrapper" data-bind = "style: {display: !isAppLoaded() ? 'flex': 'none'}">
+            <h3 class="error-title error">There is some issue loading the map<br/>Please check the internet connection or try after some time</h3>
+        </section>
         <script type="text/javascript" src="./build/main.js"></script>
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqG1PMoPH2Zit5sAFsF5c28prKGH-wSg&v=3&callback=initMap" onerror="handleMapError()"> 

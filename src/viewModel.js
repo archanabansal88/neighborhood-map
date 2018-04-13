@@ -4,6 +4,7 @@ import ko from 'knockout'
 * @constructor represents ViewModel
 * @param {object} location
 * @param {object} map
+* @param {boolean} isAppLoaded
 */
 export default class ViewModel {
   constructor (location, map, isAppLoaded) {
@@ -15,7 +16,7 @@ export default class ViewModel {
     this.filterLocation = ko.computed(() => {
       if (isAppLoaded) {
         map.closeInfoWindow()
-        return this.location.filter((venue) => {
+        return this.location.filter((venue) => { // filtering the venue and displays the filtered subset of location markers
           const isMatched = venue.title.toLowerCase().indexOf(this.searchedText().toLowerCase()) !== -1
           venue.marker.setVisible(isMatched)
           return isMatched
